@@ -47,7 +47,7 @@ ENV PHP_MEMORY_LIMIT="128M"
 
 RUN set -ex; \
     chmod 755 /usr/local/bin/php-entrypoint.sh ; \
-    fix-permissions /usr/local/src/smarty ;\
+    fix-permissions /usr/local/src/ ;\
     chgrp -R 0 /etc/php* ; \
     chmod g+w -R /etc/php* ; \
     /usr/bin/php /usr/local/src/smarty/compile_templates.php ; \
