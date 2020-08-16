@@ -44,6 +44,10 @@ COPY smarty /usr/local/src/smarty
 COPY php-entrypoint.sh /usr/local/bin
 
 ENV PHP_MEMORY_LIMIT="128M"
+ENV PHP_MAX_EXECUTION_TIME="30"
+ENV PHP_MAX_INPUT_TIME="60"
+ENV PHP_DISPLAY_ERRORS="Off"
+ENV PHP_DISPLAY_STARTUP_ERRORS="Off"
 
 RUN set -ex; \
     chmod 755 /usr/local/bin/php-entrypoint.sh ; \
