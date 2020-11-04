@@ -6,7 +6,7 @@ max_execution_time = {$smarty.env.PHP_MAX_EXECUTION_TIME}
 max_input_time = {$smarty.env.PHP_MAX_INPUT_TIME}
 {* This next variable required in the base php.ini before we run anything else *}
 variables_order = "GPCSE"
-memory_limit = {if isset($smarty.env.PHP_MEMORY_LIMIT) }{$smarty.env.PHP_MEMORY_LIMIT}{else}128M{/if}
+memory_limit = {$smarty.env.PHP_MEMORY_LIMIT}
 
 error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT
 display_errors = {$smarty.env.PHP_DISPLAY_ERRORS}

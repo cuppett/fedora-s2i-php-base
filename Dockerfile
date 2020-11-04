@@ -1,11 +1,11 @@
-FROM registry.fedoraproject.org/f32/s2i-core
+FROM registry.fedoraproject.org/f33/s2i-core
 
 ENV SUMMARY="Base PHP image which allows using of source-to-image, PHP commands and Smarty templates."	\
     DESCRIPTION="The s2i-php image provides any images layered on top of it \
 with all the tools needed to use PHP and/or source-to-image functionality while keeping \
 the image size as small as possible." \
     NAME=fedora-s2i-php \
-    VERSION=32
+    VERSION=33
 
 LABEL summary="$SUMMARY" \
       description="$DESCRIPTION" \
@@ -27,6 +27,7 @@ RUN set -ex; \
         patch \
         unzip \
         wget \
+
         php-cli \
         php-process \
         php-Smarty \
