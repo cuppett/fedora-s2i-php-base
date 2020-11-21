@@ -55,6 +55,7 @@ RUN set -ex; \
     fix-permissions /usr/local/src/ ;\
     chgrp -R 0 /etc/php* ; \
     chmod g+w -R /etc/php* ; \
+    sed '/^variables_order/d' < /etc/php.ini > /etc/php.ini ; \ 
     /usr/bin/php /usr/local/src/smarty/compile_templates.php ; \
     /usr/bin/php /usr/local/src/smarty/process_templates.php
 
