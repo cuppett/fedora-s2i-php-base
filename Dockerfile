@@ -25,7 +25,6 @@ LABEL summary="$SUMMARY" \
 # install the basic PHP CLI environment
 RUN set -ex; \
     \
-    dnf -y update; \
     dnf -y install \
         bzip2 \
         git \
