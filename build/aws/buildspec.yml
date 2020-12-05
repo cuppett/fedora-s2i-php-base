@@ -1,0 +1,25 @@
+version: 0.2
+
+env:
+  variables:
+    IMAGE_ARCH: amd64
+    IMAGE_REPO_NAME: fedora-s2i-php-base
+    IMAGE_TAG: latest
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Building the Docker image...
+      - if [ ${DOCKER_FROM} ]; then echo "Replacing FROM with ${DOCKER_FROM}"; sed -i "/FROM\ /c\FROM ${DOCKER_FROM}" Dockerfile; fi
+      - docker build --build-arg arch=$IMAGE_ARCH -t $IMAGE_REPO_NAME:$IMAGE_TAG-$IMAGE_ARCH .
+      - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG-$IMAGE_ARCH $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG-$IMAGE_ARCH
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker image...
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG-$IMAGE_ARCH

@@ -31,7 +31,6 @@ RUN set -ex; \
         patch \
         unzip \
         wget \
-
         php-cli \
         php-process \
         php-Smarty \
