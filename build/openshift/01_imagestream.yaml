@@ -1,0 +1,27 @@
+--
+kind: ImageStream
+apiVersion: image.openshift.io/v1
+metadata:
+  name: s2i-core
+spec:
+  lookupPolicy:
+    local: false
+  tags:
+    - name: f33
+      annotations: null
+      from:
+        kind: DockerImage
+        name: 'registry.fedoraproject.org/f33/s2i-core:latest'
+      generation: 1
+      importPolicy:
+        scheduled: true
+      referencePolicy:
+        type: Source
+--
+kind: ImageStream
+apiVersion: image.openshift.io/v1
+metadata:
+  name: fedora-s2i-php
+spec:
+  lookupPolicy:
+    local: false
