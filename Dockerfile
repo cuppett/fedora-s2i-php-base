@@ -27,12 +27,14 @@ RUN set -ex; \
     \
     dnf -y install \
         bzip2 \
+        curl \
         git \
         patch \
         unzip \
         wget \
         which \
         php-cli \
+        php-common \
         php-process \
         php-Smarty \
     ; \
@@ -44,6 +46,7 @@ COPY smarty /usr/local/src/smarty
 COPY php-entrypoint.sh /usr/local/bin
 
 RUN set -ex; \
+    curl -o /etc/cacert.crt https://curl.haxx.se/ca/cacert.pem; \
 # set permissions up on the runtime locations
     mkdir -p /usr/local/src/smarty/{templates_c,cache}; \
 # Fixing user location and executables
