@@ -39,8 +39,7 @@ RUN set -ex; \
         php-Smarty \
     ; \
 # reset dnf cache
-    dnf -y clean all; \
-    rm -rf /var/cache/dnf
+    dnf -y clean all;
 
 COPY smarty /usr/local/src/smarty
 COPY php-entrypoint.sh /usr/local/bin
