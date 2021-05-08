@@ -1,11 +1,11 @@
-FROM registry.fedoraproject.org/f33/s2i-core
+FROM registry.fedoraproject.org/f34/s2i-core
 
 ENV SUMMARY="Base PHP image which allows using of source-to-image, PHP commands and Smarty templates."	\
     DESCRIPTION="The s2i-php image provides any images layered on top of it \
 with all the tools needed to use PHP and/or source-to-image functionality while keeping \
 the image size as small as possible." \
     NAME=fedora-s2i-php \
-    VERSION=33 \
+    VERSION=34 \
     PHP_MEMORY_LIMIT="128M" \
     PHP_MAX_EXECUTION_TIME="30" \
     PHP_MAX_INPUT_TIME="60" \
