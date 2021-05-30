@@ -45,7 +45,7 @@ COPY smarty /usr/local/src/smarty
 COPY php-entrypoint.sh /usr/local/bin
 
 RUN set -ex; \
-    curl -o /etc/cacert.crt https://curl.haxx.se/ca/cacert.pem; \
+    curl -L -o /etc/cacert.crt https://curl.se/ca/cacert.pem; \
     chgrp 0 /etc/cacert.crt; \
     chmod g+w /etc/cacert.crt; \
 # set permissions up on the runtime locations
