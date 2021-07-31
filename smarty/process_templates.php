@@ -17,7 +17,7 @@ foreach ($it as $fileInfo) {
                 fwrite($computed_file, $smarty->fetch($relativeFileName));
                 fclose($computed_file);
             } else {
-                die('Failure opening output file: ' . $absoluteFilePath);
+                echo('Failure opening output file: ' . $absoluteFilePath);
             }
         } else {
             echo "Copying file " . $fileInfo->getPath() . DIRECTORY_SEPARATOR . $fileInfo->getFilename() .
