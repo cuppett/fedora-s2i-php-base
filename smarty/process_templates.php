@@ -27,7 +27,8 @@ foreach ($it as $fileInfo) {
                 $fileInfo->getPath() . DIRECTORY_SEPARATOR . $fileInfo->getFilename(),
                 DIRECTORY_SEPARATOR . $relativePath . DIRECTORY_SEPARATOR . $fileInfo->getFilename()
             )) {
-                die('Failed copying file.');
+                // Likely already provided via configmap
+                echo('Failed copying file: ' . DIRECTORY_SEPARATOR . $relativePath . DIRECTORY_SEPARATOR . $fileInfo->getFilename());
             }
         }
     }
