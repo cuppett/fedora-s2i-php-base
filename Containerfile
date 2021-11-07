@@ -1,4 +1,4 @@
-FROM registry.fedoraproject.org/f34/s2i-core
+FROM registry.fedoraproject.org/f35/s2i-core
 
 ENV SUMMARY="Base PHP image which allows using of source-to-image, PHP commands and Smarty templates."	\
     DESCRIPTION="The s2i-php image provides any images layered on top of it \
@@ -58,7 +58,7 @@ RUN set -ex; \
     chgrp -R 0 /usr/local/src/* ; \
     chmod g+w -R /usr/local/src/* ; \
 # Configuring initial PHP runtime
-    sed '/^variables_order/d' < /etc/php.ini > /etc/php.ini ; \ 
+    sed '/^variables_order/d' < /etc/php.ini > /etc/php.ini ; \
     /usr/bin/php /usr/local/src/smarty/compile_templates.php ; \
     /usr/bin/php /usr/local/src/smarty/process_templates.php
 
