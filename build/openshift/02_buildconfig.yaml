@@ -8,7 +8,7 @@ spec:
   output:
     to:
       kind: ImageStreamTag
-      name: 'fedora-s2i-php:33'
+      name: 'fedora-s2i-php:36'
   resources: {}
   successfulBuildsHistoryLimit: 5
   failedBuildsHistoryLimit: 5
@@ -18,7 +18,7 @@ spec:
       imageOptimizationPolicy: SkipLayers
       from:
         kind: ImageStreamTag
-        name: 's2i-core:f33'
+        name: 's2i-core:f36'
   postCommit: {}
   source:
     type: Git

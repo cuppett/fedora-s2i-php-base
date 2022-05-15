@@ -7,11 +7,11 @@ spec:
   lookupPolicy:
     local: false
   tags:
-    - name: f33
+    - name: f36
       annotations: null
       from:
         kind: DockerImage
-        name: 'registry.fedoraproject.org/f33/s2i-core:latest'
+        name: 'quay.io/cuppett/s2i-core:36'
       generation: 1
       importPolicy:
         scheduled: true
