@@ -1,11 +1,11 @@
-FROM quay.io/cuppett/s2i-core:37
+FROM quay.io/cuppett/s2i-core:38
 
 ENV SUMMARY="Base PHP image which allows using of source-to-image, PHP commands and Smarty templates."	\
     DESCRIPTION="The s2i-php image provides any images layered on top of it \
 with all the tools needed to use PHP and/or source-to-image functionality while keeping \
 the image size as small as possible." \
     NAME=fedora-s2i-php \
-    VERSION=37 \
+    VERSION=38 \
     PHP_MEMORY_LIMIT="128M" \
     PHP_MAX_EXECUTION_TIME="30" \
     PHP_MAX_INPUT_TIME="60" \
@@ -37,7 +37,7 @@ RUN set -ex; \
         php-cli \
         php-common \
         php-process \
-        php-Smarty \
+        composer \
     ; \
 # reset dnf cache
     dnf -y clean all;
@@ -59,8 +59,10 @@ RUN set -ex; \
     chmod g+w -R /usr/local/src/* ; \
 # Configuring initial PHP runtime
     sed '/^variables_order/d' < /etc/php.ini > /etc/php.ini ; \
-    /usr/bin/php /usr/local/src/smarty/compile_templates.php ; \
-    /usr/bin/php /usr/local/src/smarty/process_templates.php
+    cd /usr/local/src/smarty ; \
+    composer install ; \
+    php compile_templates.php ; \
+    php process_templates.php
 
 USER 1001
 

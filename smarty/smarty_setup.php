@@ -1,5 +1,5 @@
 <?php
-require_once('Smarty/Smarty.class.php');
+include('/usr/local/src/smarty/vendor/autoload.php');
 
 $smarty = new Smarty();
 
