@@ -1,11 +1,11 @@
-FROM quay.io/cuppett/s2i-core:38
+FROM registry.fedoraproject.org/f35/s2i-core:latest
 
 ENV SUMMARY="Base PHP image which allows using of source-to-image, PHP commands and Smarty templates."	\
     DESCRIPTION="The s2i-php image provides any images layered on top of it \
 with all the tools needed to use PHP and/or source-to-image functionality while keeping \
 the image size as small as possible." \
-    NAME=fedora-s2i-php \
-    VERSION=38 \
+    NAME=fedora-s2i-php-base \
+    VERSION=39 \
     PHP_MEMORY_LIMIT="128M" \
     PHP_MAX_EXECUTION_TIME="30" \
     PHP_MAX_INPUT_TIME="60" \
@@ -20,7 +20,8 @@ LABEL summary="$SUMMARY" \
       name="$FGC/$NAME" \
       version="$VERSION" \
       usage="This image is supposed to be used as a base image for other images that support PHP or source-to-image" \
-      maintainer="Stephen Cuppett <steve@cuppett.com>"
+      maintainer="Stephen Cuppett <steve@cuppett.com>" \
+      org.opencontainers.image.source="https://github.com/cuppett/fedora-s2i-php-base"
 
 # install the basic PHP CLI environment
 RUN set -ex; \
