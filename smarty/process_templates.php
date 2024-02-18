@@ -16,20 +16,15 @@ foreach ($it as $fileInfo) {
             if ($computed_file) {
                 fwrite($computed_file, $smarty->fetch($relativeFileName));
                 fclose($computed_file);
-            } else {
-                echo('Failure opening output file: ' . $absoluteFilePath);
             }
         } else {
             echo "Copying file " . $fileInfo->getPath() . DIRECTORY_SEPARATOR . $fileInfo->getFilename() .
             " to " . DIRECTORY_SEPARATOR . $relativePath . DIRECTORY_SEPARATOR . $fileInfo->getFilename() . "\n";
             // Simply copy the file.
-            if (!copy(
+            copy(
                 $fileInfo->getPath() . DIRECTORY_SEPARATOR . $fileInfo->getFilename(),
                 DIRECTORY_SEPARATOR . $relativePath . DIRECTORY_SEPARATOR . $fileInfo->getFilename()
-            )) {
-                // Likely already provided via configmap
-                echo('Failed copying file: ' . DIRECTORY_SEPARATOR . $relativePath . DIRECTORY_SEPARATOR . $fileInfo->getFilename());
-            }
+            );
         }
     }
 }
