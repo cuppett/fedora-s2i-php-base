@@ -1,4 +1,4 @@
-FROM registry.fedoraproject.org/f35/s2i-core:latest
+FROM quay.io/fedora/s2i-core:latest
 
 ENV SUMMARY="Base PHP image which allows using of source-to-image, PHP commands and Smarty templates."	\
     DESCRIPTION="The s2i-php image provides any images layered on top of it \
